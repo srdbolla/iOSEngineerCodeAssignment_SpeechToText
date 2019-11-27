@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CodeAssignment_SpeechToText" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAA-fr-Z29">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Speech To Text" id="lJS-vq-LfU"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEZ-pD-GGI">
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Ayt-Z5-5gz"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="6Wz-83-RRi"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JAA-fr-Z29" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="02E-G6-501"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qEZ-pD-GGI" secondAttribute="bottom" id="EiY-wy-vjo"/>
+                            <constraint firstItem="JAA-fr-Z29" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bUD-Jj-rgn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qEZ-pD-GGI" secondAttribute="trailing" id="hbU-KD-RzQ"/>
+                            <constraint firstItem="qEZ-pD-GGI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mfN-hp-PjP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JAA-fr-Z29" secondAttribute="trailing" id="pBV-gu-DGs"/>
+                            <constraint firstItem="qEZ-pD-GGI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="tll-Cy-eXX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="qEZ-pD-GGI" id="gup-Fe-uBb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.739130434782609" y="103.53260869565219"/>
+        </scene>
+    </scenes>
+</document>

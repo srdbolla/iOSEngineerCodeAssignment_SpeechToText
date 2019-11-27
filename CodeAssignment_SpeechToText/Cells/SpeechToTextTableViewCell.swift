@@ -1,38 +1,59 @@
 //
-//  ViewController.swift
+//  SpeechToTextTableViewCell.swift
 //  CodeAssignment_SpeechToText
 //
-//  Created by Sri Divya Bolla on 13/11/19.
+//  Created by Sri Divya Bolla on 21/11/19.
 //  Copyright © 2019 Sri Divya Bolla. All rights reserved.
 //
 
 import UIKit
 import Speech
 
+/**
+ SpeechToTextTableCellDelegate --> It has a method updateSpeechTextString to update the speech text string in the ViewModel
+ */
+protocol SpeechToTextTableCellDelegate {
+    func updateSpeechTextString(text: String)
+}
 
-class ViewController: UIViewController {
+/**
+ SpeechToTextTableViewCell --> Used for recording the speech and converting speech to text
+ */
+class SpeechToTextTableViewCell: UITableViewCell {
 
+    /**
+     IBOutlets
+     */
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var convertedTextFromSpeechLabel: UILabel!
     
+    /**
+     Variables
+     */
     var audioEngine: AVAudioEngine = AVAudioEngine()
     var speechRecognizer: SFSpeechRecognizer?
     var speechRecognitionRequest: SFSpeechAudioBufferRecognitionRequest = SFSpeechAudioBufferRecognitionRequest()
     var speechRecognitionTask: SFSpeechRecognitionTask?
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        audioEngine = AVAudioEngine.init()
-        speechRecognizer = SFSpeechRecognizer.init()
 
+    var delegate: SpeechToTextTableCellDelegate?
+    
+    //Default Methods
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
-    //When tapped on the button, clear speech label text, show activity indicator, start computing the text of the label from scratch
+    /**
+     IBAction --> recordSpeechAndConvertToTextAction --> method called when "Tap to record speech" button is tapped
+     */
     @IBAction func recordSpeechAndConvertToTextAction(_ sender: UIButton) {
+        initializeVariables()
         convertedTextFromSpeechLabel.text = ""
         showActivityIndicator()
         
@@ -42,8 +63,21 @@ class ViewController: UIViewController {
         recognizeSpeechAndConvertToText()
     }
     
+    //Custom Methods
+    
+    /**
+     initializeVariables --> Method to initialize the variables
+     */
+    func initializeVariables() {
+        audioEngine = AVAudioEngine.init()
+        speechRecognizer = SFSpeechRecognizer.init()
+        speechRecognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+    }
+        
+    /**
+     recognizeSpeechAndConvertToText --> recognizes speech and converts it to text
+     */
     func recognizeSpeechAndConvertToText() {
-
         let node = audioEngine.inputNode
         let outputFormat = node.outputFormat(forBus: 0)
         node.installTap(onBus: 0, bufferSize: 1024, format: outputFormat) { (buffer, audioTime) in
@@ -75,31 +109,44 @@ class ViewController: UIViewController {
                     self?.showTextLabelWhenSpeechIsNotRecorded()
                     self?.hideActivityIndicator()
                     
-                    self?.convertedTextFromSpeechLabel.text =  speechRecognitionResult.bestTranscription.formattedString
+                    let convertedSpeechToTextString = speechRecognitionResult.bestTranscription.formattedString
+                    self?.convertedTextFromSpeechLabel.text =  convertedSpeechToTextString
+                    
+                    self?.delegate?.updateSpeechTextString(text: convertedSpeechToTextString)
+                    
                 }
             }
         })
     }
     
+    /**
+     hideTextLabelWhenSpeechIsNotRecorded --> to hide convertedTextFromSpeechLabel
+     */
     func hideTextLabelWhenSpeechIsNotRecorded() {
         convertedTextFromSpeechLabel.isHidden = true
     }
     
+    /**
+        showTextLabelWhenSpeechIsNotRecorded --> to show convertedTextFromSpeechLabel
+     */
     func showTextLabelWhenSpeechIsNotRecorded() {
         convertedTextFromSpeechLabel.isHidden = false
     }
     
+    /**
+        showActivityIndicator --> shows the activity indicator and starts animating
+     */
     func showActivityIndicator() {
         activityIndicator.startAnimating()
         activityIndicator.isHidden = false
     }
     
+    /**
+        hideActivityIndicator --> hides activity indicator and stops animating
+     */
     func hideActivityIndicator() {
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
     }
-    
-    
 
 }
-

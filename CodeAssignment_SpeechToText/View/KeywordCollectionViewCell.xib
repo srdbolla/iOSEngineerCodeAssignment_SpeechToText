@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KeywordCollectionViewCell" id="vqR-1N-8If" customClass="KeywordCollectionViewCell" customModule="CodeAssignment_SpeechToText" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="156" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qpq-0G-ini">
+                <rect key="frame" x="0.0" y="0.0" width="156" height="52"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JO2-Sy-Gn4">
+                        <rect key="frame" x="15" y="11" width="82" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="82" id="zHR-Td-bkz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCl-A4-Qoj">
+                        <rect key="frame" x="112" y="11" width="30" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="4dn-XH-WZk"/>
+                            <constraint firstAttribute="width" constant="30" id="jeu-rd-S9S"/>
+                        </constraints>
+                        <state key="normal" image="delete_button"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="deleteButtonAction:" destination="vqR-1N-8If" eventType="touchUpInside" id="hxk-n7-zBe"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="JO2-Sy-Gn4" secondAttribute="bottom" constant="11" id="DAu-PZ-cST"/>
+                    <constraint firstItem="JO2-Sy-Gn4" firstAttribute="top" secondItem="Qpq-0G-ini" secondAttribute="top" constant="11" id="Gwl-q2-uXj"/>
+                    <constraint firstItem="dCl-A4-Qoj" firstAttribute="centerY" secondItem="Qpq-0G-ini" secondAttribute="centerY" id="NLe-BE-gJE"/>
+                    <constraint firstItem="dCl-A4-Qoj" firstAttribute="leading" secondItem="JO2-Sy-Gn4" secondAttribute="trailing" constant="15" id="bNC-hB-qVA"/>
+                    <constraint firstItem="JO2-Sy-Gn4" firstAttribute="leading" secondItem="Qpq-0G-ini" secondAttribute="leading" constant="15" id="mrE-yk-xsJ"/>
+                    <constraint firstAttribute="trailing" secondItem="dCl-A4-Qoj" secondAttribute="trailing" constant="14" id="scw-LW-DjW"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="156" height="52"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="2"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="deleteButton" destination="dCl-A4-Qoj" id="XZM-R6-1OB"/>
+                <outlet property="keywordLabel" destination="JO2-Sy-Gn4" id="Whk-zf-ddt"/>
+            </connections>
+            <point key="canvasLocation" x="-80.625" y="106.69014084507042"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="delete_button" width="128" height="128"/>
+    </resources>
+</document>
