@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         static let numberOfRowsIn1SectionTableView: Int = 1
         static let numberOfRowsIn2SectionTableView: Int = 2
         
-        static let tableViewRowHeight = 201
+        static let tableViewRowHeight: CGFloat = 201
     }
     
     //Default Methods

@@ -13,7 +13,6 @@
 		545AEF20237B32F3000F0AA4 /* CodeAssignment_SpeechToText.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 545AEF1E237B32F3000F0AA4 /* CodeAssignment_SpeechToText.xcdatamodeld */; };
 		545AEF22237B32F3000F0AA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 545AEF21237B32F3000F0AA4 /* Assets.xcassets */; };
 		545AEF25237B32F3000F0AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545AEF23237B32F3000F0AA4 /* LaunchScreen.storyboard */; };
-		545AEF30237B32F4000F0AA4 /* CodeAssignment_SpeechToTextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AEF2F237B32F4000F0AA4 /* CodeAssignment_SpeechToTextTests.swift */; };
 		545AEF3B237B32F4000F0AA4 /* CodeAssignment_SpeechToTextUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AEF3A237B32F4000F0AA4 /* CodeAssignment_SpeechToTextUITests.swift */; };
 		5465499B2386CEA6006B1FA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546549992386CEA6006B1FA9 /* Main.storyboard */; };
 		54C0964623865F6400B8421F /* KeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C0964523865F6400B8421F /* KeywordCollectionViewCell.swift */; };
@@ -349,7 +348,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				54D3FA5D238E6AA20034EE72 /* ViewControllerTests.swift in Sources */,
-				545AEF30237B32F4000F0AA4 /* CodeAssignment_SpeechToTextTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
