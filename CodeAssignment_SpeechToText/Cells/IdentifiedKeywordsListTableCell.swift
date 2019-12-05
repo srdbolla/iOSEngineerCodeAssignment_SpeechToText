@@ -56,6 +56,7 @@ class IdentifiedKeywordsListTableCell: UITableViewCell {
      */
     @IBAction func identifyKeywordsAction(_ sender: Any) {
         self.delegate?.computeKeywordsIdentifiedDictionary()
+        self.keywordsTableView.reloadData()
     }
     
     //Custom Methods
@@ -63,14 +64,15 @@ class IdentifiedKeywordsListTableCell: UITableViewCell {
      setKeywordsTableViewDelegateAndReload --> this method sets the keywordsTableView delegate and dataSource, registers KeywordsTableViewCell, and reloads the keywordsTableView
      */
     func setKeywordsTableViewDelegateAndReload() {
+        self.keywordsTableView.register(UINib.init(nibName: Constants.keywordsTableViewCellNibName, bundle: nil), forCellReuseIdentifier: Constants.keywordsTableViewCellIdentifier)
         
         self.keywordsTableView.delegate = self
         self.keywordsTableView.dataSource = self
-        
-        self.keywordsTableView.register(UINib.init(nibName: Constants.keywordsTableViewCellNibName, bundle: nil), forCellReuseIdentifier: Constants.keywordsTableViewCellIdentifier)
-        
+
+        keywordsTableView.estimatedRowHeight = CGFloat(60.0)
+        keywordsTableView.rowHeight = UITableView.automaticDimension
+                
         self.keywordsTableView.tableFooterView = UIView()
-        self.reloadTableView()
     }
     
     /**
@@ -97,5 +99,6 @@ extension IdentifiedKeywordsListTableCell: UITableViewDelegate, UITableViewDataS
         keywordsTableViewCell.detailTextLabel?.text = "\(keywordsIdentifiedDictionary[key] ?? 0)"
         return keywordsTableViewCell
     }
+
 }
 

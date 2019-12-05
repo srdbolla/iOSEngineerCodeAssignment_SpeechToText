@@ -41,6 +41,10 @@ class ViewController: UIViewController {
         static let numberOfRowsIn2SectionTableView: Int = 2
         
         static let tableViewRowHeight: CGFloat = 201
+        
+        static let section0Row1IndexPath = IndexPath.init(row: 0, section: 1)
+        static let section1Row1IndexPath = IndexPath.init(row: 1, section: 1)
+
     }
     
     //Default Methods
@@ -128,9 +132,7 @@ extension ViewController {
             return UITableViewCell()
         }
         speechToTextTableCell.delegate = self
-        speechToTextTableCell.initializeVariables()
-        speechToTextTableCell.recordSpeechButton.isEnabled = true
-        speechToTextTableCell.hideActivityIndicator()
+        speechToTextTableCell.convertedTextFromSpeechLabel.text = self.viewModel.speechToTextString
         
         return speechToTextTableCell
     }
@@ -144,10 +146,13 @@ extension ViewController {
         }
         
         identifiedKeywordsListTableCell.delegate = self
-        identifiedKeywordsListTableCell.keywordsIdentifiedDictionary = self.viewModel.identifiedKeywordsDictionary
             
         identifiedKeywordsListTableCell.setKeywordsTableViewDelegateAndReload()
         
+        identifiedKeywordsListTableCell.keywordsIdentifiedDictionary = self.viewModel.identifiedKeywordsDictionary
+
+        identifiedKeywordsListTableCell.keywordsTableView.reloadData()
+                
         return identifiedKeywordsListTableCell
     }
     
@@ -172,28 +177,19 @@ extension ViewController: InputKeywordsFromUserTableCellDelegate {
  */
 extension ViewController: SpeechToTextTableCellDelegate {
     func updateSpeechTextString(text: String) {
-        clearAllFields()
         self.viewModel.speechToTextString = text
         
-        computeViewModelKeywordsDictionaryAndReload()
+        self.tableView.reloadRows(at: [Constants.section0Row1IndexPath], with: .automatic)
+
     }
     
     func computeViewModelKeywordsDictionaryAndReload() {
         self.viewModel.assignIdentifiedKeywordsDictionary()
         reloadIdentifiedKeywordsListCellTableView()
     }
-    
-    func clearAllFields() {
-        self.viewModel.speechToTextString = ""
-        self.viewModel.identifiedKeywordsDictionary = [:]
-        reloadIdentifiedKeywordsListCellTableView()
-    }
-    
+        
     func reloadIdentifiedKeywordsListCellTableView() {
-        if let identifiedKeywordsCell = self.tableView.cellForRow(at: IndexPath.init(row: 1, section: 1)) as? IdentifiedKeywordsListTableCell {
-            identifiedKeywordsCell.keywordsIdentifiedDictionary = self.viewModel.identifiedKeywordsDictionary
-            identifiedKeywordsCell.reloadTableView()
-        }
+        self.tableView.reloadRows(at: [Constants.section1Row1IndexPath], with: .automatic)
     }
 }
 

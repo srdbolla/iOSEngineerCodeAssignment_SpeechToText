@@ -36,12 +36,7 @@ class SpeechToTextTableViewCell: UITableViewCell {
      */
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var convertedTextFromSpeechLabel: UILabel!
-    @IBOutlet weak var recordSpeechButton: UIButton! {
-        willSet {
-            newValue.isEnabled = false
-            newValue.setTitle(Constants.startSpeechRecordingString, for: .normal)
-        }
-    }
+    @IBOutlet weak var recordSpeechButton: UIButton!
     
     /**
      Variables
@@ -52,6 +47,7 @@ class SpeechToTextTableViewCell: UITableViewCell {
     var speechRecognitionTask: SFSpeechRecognitionTask?
 
     var delegate: SpeechToTextTableCellDelegate?
+    var recordedSpeechString: String = ""
     
     //Default Methods
     override func awakeFromNib() {
@@ -78,11 +74,10 @@ class SpeechToTextTableViewCell: UITableViewCell {
         } else {
             initializeVariables()
             convertedTextFromSpeechLabel.text = ""
-            hideTextLabelWhenSpeechIsNotRecorded()
             showActivityIndicator()
+            recordSpeechButton.setTitle(Constants.stopSpeechRecordingString, for: [])
 
             recognizeSpeechAndConvertToText()
-            recordSpeechButton.setTitle(Constants.stopSpeechRecordingString, for: [])
         }
     }
     
@@ -123,27 +118,25 @@ class SpeechToTextTableViewCell: UITableViewCell {
             hideActivityIndicator()
             return
         }
-        
+        self.showTextLabelWhenSpeechIsNotRecorded()
+
         speechRecognizer = nonNilSpeechRecognizer
         speechRecognitionRequest = SFSpeechAudioBufferRecognitionRequest()
 
         speechRecognitionTask = speechRecognizer?.recognitionTask(with: speechRecognitionRequest) { [weak self] (result, error) in
             if let speechRecognitionResult = result {
                 DispatchQueue.main.async {
-                    self?.showTextLabelWhenSpeechIsNotRecorded()
-                    self?.hideActivityIndicator()
-                    
                     let convertedSpeechToTextString = speechRecognitionResult.bestTranscription.formattedString
-                    self?.convertedTextFromSpeechLabel.text =  convertedSpeechToTextString
-                    
-                    self?.delegate?.updateSpeechTextString(text: convertedSpeechToTextString)
-                    
+                    self?.recordedSpeechString = convertedSpeechToTextString
                 }
             }
         }
     }
     
     func stopRecordingSpeech() {
+        self.convertedTextFromSpeechLabel.text = self.recordedSpeechString
+        self.delegate?.updateSpeechTextString(text: self.recordedSpeechString)
+
         self.audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
         self.speechRecognitionTask = nil

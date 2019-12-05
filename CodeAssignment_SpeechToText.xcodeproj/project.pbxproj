@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5434547D23996ACC0027BB1F /* KeywordsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434547C23996ACC0027BB1F /* KeywordsTableView.swift */; };
 		545280EE2398DFB200ADFFC9 /* KeywordsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545280ED2398DFB200ADFFC9 /* KeywordsCollectionView.swift */; };
 		545AEF16237B32F3000F0AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AEF15237B32F3000F0AA4 /* AppDelegate.swift */; };
 		545AEF18237B32F3000F0AA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AEF17237B32F3000F0AA4 /* SceneDelegate.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5434547C23996ACC0027BB1F /* KeywordsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordsTableView.swift; sourceTree = "<group>"; };
 		545280ED2398DFB200ADFFC9 /* KeywordsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordsCollectionView.swift; sourceTree = "<group>"; };
 		545AEF12237B32F3000F0AA4 /* CodeAssignment_SpeechToText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAssignment_SpeechToText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545AEF15237B32F3000F0AA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				545280ED2398DFB200ADFFC9 /* KeywordsCollectionView.swift */,
+				5434547C23996ACC0027BB1F /* KeywordsTableView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				545AEF18237B32F3000F0AA4 /* SceneDelegate.swift in Sources */,
 				54C09655238688FA00B8421F /* SpeechToTextTableViewCell.swift in Sources */,
 				545AEF20237B32F3000F0AA4 /* CodeAssignment_SpeechToText.xcdatamodeld in Sources */,
+				5434547D23996ACC0027BB1F /* KeywordsTableView.swift in Sources */,
 				54C0964C2386669400B8421F /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
