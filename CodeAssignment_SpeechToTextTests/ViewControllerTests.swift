@@ -77,7 +77,7 @@ class ViewControllerTests: XCTestCase {
                         testSpeechToTextTableViewCell(cell: cell as? SpeechToTextTableViewCell)
                         break
                     case is IdentifiedKeywordsListTableCell:
-
+                        testIdentifiedKeywordsListTableViewCell(cell: cell as? IdentifiedKeywordsListTableCell)
                         break
                     default:
                         break
@@ -121,7 +121,7 @@ class ViewControllerTests: XCTestCase {
 
                 for item in 0..<numberOfItems {
                     let indexPath = IndexPath.init(item: item, section: section)
-                    XCTAssert((collectionView.cellForItem(at: indexPath) != nil))
+//                    XCTAssert((collectionView.cellForItem(at: indexPath) != nil))
                     if let keywordCollectionCell = cell?.keywordsCollectionView.dequeueReusableCell(withReuseIdentifier: InputKeywordsFromUserTableViewCell.Constants.collectionCellIdentifier, for: indexPath) as? KeywordCollectionViewCell {
                         keywordCollectionCell.configureCell(keyword: cell?.keywordsArray[indexPath.item].keyword ?? "")
                         
