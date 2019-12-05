@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		545280EE2398DFB200ADFFC9 /* KeywordsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545280ED2398DFB200ADFFC9 /* KeywordsCollectionView.swift */; };
 		545AEF16237B32F3000F0AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AEF15237B32F3000F0AA4 /* AppDelegate.swift */; };
 		545AEF18237B32F3000F0AA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AEF17237B32F3000F0AA4 /* SceneDelegate.swift */; };
 		545AEF1A237B32F3000F0AA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AEF19237B32F3000F0AA4 /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		545280ED2398DFB200ADFFC9 /* KeywordsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordsCollectionView.swift; sourceTree = "<group>"; };
 		545AEF12237B32F3000F0AA4 /* CodeAssignment_SpeechToText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAssignment_SpeechToText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545AEF15237B32F3000F0AA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		545AEF17237B32F3000F0AA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		545280EC2398DF8D00ADFFC9 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				545280ED2398DFB200ADFFC9 /* KeywordsCollectionView.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		545AEF09237B32F3000F0AA4 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +132,7 @@
 		545AEF14237B32F3000F0AA4 /* CodeAssignment_SpeechToText */ = {
 			isa = PBXGroup;
 			children = (
+				545280EC2398DF8D00ADFFC9 /* Utility */,
 				54C0965A2386910000B8421F /* ViewModel */,
 				54C09659238690CC00B8421F /* Cells */,
 				54C0965823868AEA00B8421F /* ViewControllers */,
@@ -331,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				545280EE2398DFB200ADFFC9 /* KeywordsCollectionView.swift in Sources */,
 				545AEF1A237B32F3000F0AA4 /* ViewController.swift in Sources */,
 				545AEF16237B32F3000F0AA4 /* AppDelegate.swift in Sources */,
 				54C096512386857D00B8421F /* InputKeywordsFromUserTableViewCell.swift in Sources */,

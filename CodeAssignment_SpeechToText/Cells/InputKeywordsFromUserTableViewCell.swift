@@ -40,6 +40,11 @@ class InputKeywordsFromUserTableViewCell: UITableViewCell {
         static let collectionCellIdentifier = "KeywordCollectionViewCell"
         static let enterProperKeywordsMessageString = "Please do not enter repeated keywords or enter keywords with characters > 0"
         static let okString = "OK"
+        
+        static let cellTextFont12 = UIFont.systemFont(ofSize:12.0)
+        static let cellDefaultWidth: CGFloat = 156.0
+        static let defaultCellHeight: CGFloat = 40.0
+        
     }
     
     //Default methods
@@ -83,6 +88,11 @@ class InputKeywordsFromUserTableViewCell: UITableViewCell {
      */
     func configureCollectionView() {
         self.keywordsCollectionView.register(UINib.init(nibName: Constants.collectionCellIdentifier, bundle: nil), forCellWithReuseIdentifier: Constants.collectionCellIdentifier)
+        
+        //When estimatedItemSize is set, the UICollectionViewCell height is taken dynamically
+        if let flowLayout = keywordsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = CGSize.init(width: 1, height: 1)
+        }
     }
     /**
         isNotNewKeyword --> Method to check if keywordsTextField has existing keyword from keywordsArray
@@ -111,6 +121,7 @@ class InputKeywordsFromUserTableViewCell: UITableViewCell {
     */
     func reloadKeywordsCollectionView() {
         self.keywordsCollectionView.reloadData()
+        self.keywordsCollectionView.layoutIfNeeded()
     }
 
 }
@@ -118,7 +129,7 @@ class InputKeywordsFromUserTableViewCell: UITableViewCell {
 /**
  Confirming to UICollectionViewDelegate and UICollectionViewDataSource
  */
-extension InputKeywordsFromUserTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension InputKeywordsFromUserTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return keywordsArray.count

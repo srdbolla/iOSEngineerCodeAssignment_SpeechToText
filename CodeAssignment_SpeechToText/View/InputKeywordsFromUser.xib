@@ -17,9 +17,6 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add keywords to identify in the speech" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miR-78-IDG">
                         <rect key="frame" x="10" y="10" width="382" height="25.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="382" id="Fog-o9-leS"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -34,7 +31,7 @@
                             <action selector="addKeywordButtonAction:" destination="m4U-DT-Ym9" eventType="touchUpInside" id="DAN-Kd-XuY"/>
                         </connections>
                     </button>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Btl-kq-y4W" customClass="DynamicHeightCollectionView" customModule="CodeAssignment_SpeechToText" customModuleProvider="target">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Btl-kq-y4W" customClass="KeywordsCollectionView" customModule="CodeAssignment_SpeechToText" customModuleProvider="target">
                         <rect key="frame" x="11" y="96" width="381.5" height="141"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hor-3F-0hN">

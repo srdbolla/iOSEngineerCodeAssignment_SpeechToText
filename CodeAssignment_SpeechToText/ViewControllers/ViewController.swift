@@ -60,9 +60,10 @@ class ViewController: UIViewController {
         tableView.register(UINib.init(nibName: Constants.inputKeywordsFromUserNibName, bundle: nil), forCellReuseIdentifier: Constants.inputKeywordsFromUserCellIdentifier)
         tableView.register(UINib.init(nibName: Constants.speechToTextTableCellNibName, bundle: nil), forCellReuseIdentifier: Constants.speechToTextTableCellIdentifier)
         tableView.register(UINib.init(nibName: Constants.identifiedKeywordsListCellNibName, bundle: nil), forCellReuseIdentifier: Constants.identifiedKeywordsListCellIdentifier)
-        
-        tableView.rowHeight = CGFloat(Constants.tableViewRowHeight)
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+                
+        tableView?.estimatedRowHeight = CGFloat(Constants.tableViewRowHeight)
+        tableView?.rowHeight = UITableView.automaticDimension
+
     }
     
 }
@@ -128,6 +129,7 @@ extension ViewController {
         }
         speechToTextTableCell.delegate = self
         speechToTextTableCell.initializeVariables()
+        speechToTextTableCell.recordSpeechButton.isEnabled = true
         speechToTextTableCell.hideActivityIndicator()
         
         return speechToTextTableCell

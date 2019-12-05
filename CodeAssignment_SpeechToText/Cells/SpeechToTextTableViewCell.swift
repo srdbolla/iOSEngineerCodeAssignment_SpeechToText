@@ -22,10 +22,26 @@ protocol SpeechToTextTableCellDelegate {
 class SpeechToTextTableViewCell: UITableViewCell {
 
     /**
+     Constants
+     */
+    
+    enum Constants {
+        static let startSpeechRecordingString = "Start Recording Speech"
+        static let stoppingString = "Stopping"
+        static let stopSpeechRecordingString = "Stop recording Speech"
+    }
+    
+    /**
      IBOutlets
      */
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var convertedTextFromSpeechLabel: UILabel!
+    @IBOutlet weak var recordSpeechButton: UIButton! {
+        willSet {
+            newValue.isEnabled = false
+            newValue.setTitle(Constants.startSpeechRecordingString, for: .normal)
+        }
+    }
     
     /**
      Variables
@@ -53,14 +69,21 @@ class SpeechToTextTableViewCell: UITableViewCell {
      IBAction --> recordSpeechAndConvertToTextAction --> method called when "Tap to record speech" button is tapped
      */
     @IBAction func recordSpeechAndConvertToTextAction(_ sender: UIButton) {
-        initializeVariables()
-        convertedTextFromSpeechLabel.text = ""
-        showActivityIndicator()
-        
-        hideTextLabelWhenSpeechIsNotRecorded()
-        showActivityIndicator()
-        
-        recognizeSpeechAndConvertToText()
+        startOrStopRecordingSpeech()
+    }
+    
+    func startOrStopRecordingSpeech() {
+        if audioEngine.isRunning {
+            stopRecordingSpeech()
+        } else {
+            initializeVariables()
+            convertedTextFromSpeechLabel.text = ""
+            hideTextLabelWhenSpeechIsNotRecorded()
+            showActivityIndicator()
+
+            recognizeSpeechAndConvertToText()
+            recordSpeechButton.setTitle(Constants.stopSpeechRecordingString, for: [])
+        }
     }
     
     //Custom Methods
@@ -102,8 +125,9 @@ class SpeechToTextTableViewCell: UITableViewCell {
         }
         
         speechRecognizer = nonNilSpeechRecognizer
-        
-        speechRecognitionTask = speechRecognizer?.recognitionTask(with: speechRecognitionRequest, resultHandler: { [weak self] (result, error) in
+        speechRecognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+
+        speechRecognitionTask = speechRecognizer?.recognitionTask(with: speechRecognitionRequest) { [weak self] (result, error) in
             if let speechRecognitionResult = result {
                 DispatchQueue.main.async {
                     self?.showTextLabelWhenSpeechIsNotRecorded()
@@ -116,7 +140,15 @@ class SpeechToTextTableViewCell: UITableViewCell {
                     
                 }
             }
-        })
+        }
+    }
+    
+    func stopRecordingSpeech() {
+        self.audioEngine.stop()
+        audioEngine.inputNode.removeTap(onBus: 0)
+        self.speechRecognitionTask = nil
+        self.recordSpeechButton.setTitle(Constants.startSpeechRecordingString, for: [])
+        self.hideActivityIndicator()
     }
     
     /**

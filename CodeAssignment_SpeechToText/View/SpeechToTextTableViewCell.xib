@@ -64,6 +64,7 @@
             <connections>
                 <outlet property="activityIndicator" destination="3gi-0l-4Di" id="E5t-GW-p6U"/>
                 <outlet property="convertedTextFromSpeechLabel" destination="pQS-e9-t23" id="0HZ-vO-2ra"/>
+                <outlet property="recordSpeechButton" destination="Hlh-fC-cf1" id="99r-D4-vwC"/>
             </connections>
             <point key="canvasLocation" x="-49" y="51"/>
         </tableViewCell>
